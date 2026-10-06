@@ -504,7 +504,6 @@ if(typeof window.TSNC_AJAX === 'undefined'){
 
 // ============ EMAIL VERIFICATION (v3.5 carry-forward) ============
 window.__tsncEmailVerified = false;
-window.__tsncVerifyRequired = true; // set false to disable verification
 
 function tsncMsg(text,ok){
   const msg=document.getElementById("tsnc-verify-msg");
@@ -1014,7 +1013,7 @@ function bindCalc(){
     // Area is required at Reserve — the on-screen price may be Toronto-defaulted.
     if(!state.area){ const err=$("#tsnc-l-areaerr"); if(err)err.style.display="block"; const ar=$("#tsnc-area-in"); if(ar){ar.focus(); ar.style.borderColor="#B3471F";} return; }
     // Email verification — must be verified before submitting
-    if(window.__tsncVerifyRequired && !window.__tsncEmailVerified){
+    if(!window.__tsncEmailVerified){
       const sent=!!window.__tsncCodeSentTo;
       tsncMsg(sent?"Please enter the code we emailed you and click Verify first.":"Please verify your email first — click “Send verification code”.",false);
       const target=document.getElementById(sent?"tsnc-verify-code":"tsnc-send-code"); if(target)target.focus();
@@ -1052,9 +1051,9 @@ function bindCalc(){
       request_id:window.__requestId||"",
       name:v("#tsnc-l-name"),phone:v("#tsnc-l-phone"),email:v("#tsnc-l-email"),
       estimate:JSON.stringify(window.__estimate),
-      address:v("#tsnc-l-address"),unit:v("#tsnc-l-unit"),preferred_date:v("#tsnc-l-date"),
-      preferred_time:(document.querySelector('input[name="l-time"]:checked')||{}).value||"",
-      access_notes:v("#tsnc-l-notes"),how_heard:v("#tsnc-l-source")
+      address:v("#tsnc-l-address"),unit:v("#tsnc-l-unit"),preferredDate:v("#tsnc-l-date"),
+      preferredTime:(document.querySelector('input[name="l-time"]:checked')||{}).value||"",
+      accessNotes:v("#tsnc-l-notes"),howHeard:v("#tsnc-l-source")
     };
     fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
       method:"POST",
