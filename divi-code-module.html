@@ -1,0 +1,1211 @@
+<!-- TSNC Calculator v2.1 — Divi Code Module — built 2026-10-05 -->
+<!-- Place this in a Divi Code Module. No other files needed. -->
+<style>
+
+:root{
+  --ink:#22301F; --forest:#2C6B22; --leaf:#3A962A; --leaf-dk:#2E7A20;
+  --mint:transparent; --cloud:#F5FAF3; --paper:#FFFFFF; --line:#DAE8D6;
+  --cta:#3A962A; --cta-dk:#2E7A20; --gold:#F2B824; --charcoal:#313232;
+  --display:'Bricolage Grotesque',sans-serif; --body:'Figtree',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --rad:14px; --shadow:0 10px 30px rgba(17,48,31,.10);
+}
+#tsnc-estimate .tsnc-container{max-width:1300px;margin:0 auto;padding:0 22px}
+#tsnc-estimate .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf-dk);display:block;margin-bottom:.7rem}
+#tsnc-estimate .lede{font-size:1.12rem;color:#3C5847;max-width:62ch}
+#tsnc-estimate .alt{background:var(--cloud)} #tsnc-estimate .mint{background:var(--mint)}
+#tsnc-estimate .btn{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--display);font-weight:700;font-size:1rem;
+  padding:.85rem 1.5rem;border-radius:999px;border:0;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s}
+#tsnc-estimate .btn-cta{background:var(--cta);color:#fff}
+#tsnc-estimate .btn-cta:hover{background:var(--cta-dk);transform:translateY(-1px)}
+#tsnc-estimate .btn-ghost{background:transparent;color:var(--forest);box-shadow:inset 0 0 0 2px var(--forest)}
+#tsnc-estimate .btn-ghost:hover{background:var(--forest);color:#fff}
+#tsnc-estimate .btn-ghost.on-dark{color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.7)}
+#tsnc-estimate .btn-ghost.on-dark:hover{background:#fff;color:var(--forest)}
+#tsnc-estimate :where(a, #tsnc-estimate button, #tsnc-estimate summary, #tsnc-estimate input, #tsnc-estimate select):focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+#tsnc-estimate .strip{background:var(--leaf);color:#fff;font-size:.86rem;padding:.55rem 0;font-weight:600}
+#tsnc-estimate .strip .container{display:flex;justify-content:space-between;gap:.6rem 1.2rem;flex-wrap:wrap;align-items:center}
+#tsnc-estimate .strip b{font-weight:800}
+#tsnc-estimate .strip .stars{color:#FFD24A;letter-spacing:.04em}
+#tsnc-estimate .strip a{color:#fff;font-weight:800;text-decoration:none}
+#tsnc-estimate .strip .em{color:var(--gold)}
+#tsnc-estimate header.site{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
+#tsnc-estimate .nav{display:flex;align-items:center;gap:1.2rem;min-height:74px}
+#tsnc-estimate .nav .logo img{height:46px;width:auto}
+#tsnc-estimate .nav ul{display:flex;gap:.15rem;list-style:none;margin-left:auto;align-items:center}
+#tsnc-estimate .nav li{position:relative}
+#tsnc-estimate .nav li>a{display:block;padding:.6rem .65rem;text-decoration:none;color:var(--ink);font-weight:600;font-size:.92rem;border-radius:8px}
+#tsnc-estimate .nav li>a:hover{background:var(--mint)}
+#tsnc-estimate .nav li>a.active{background:var(--mint)}
+#tsnc-estimate .nav .sub{position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);
+  min-width:230px;padding:.4rem;display:none;flex-direction:column;gap:.1rem}
+#tsnc-estimate .nav li:hover .sub, #tsnc-estimate .nav li.open .sub{display:flex}
+#tsnc-estimate .nav .sub a{font-weight:500}
+#tsnc-estimate .nav .actions{display:flex;align-items:center;gap:.7rem;margin-left:.5rem}
+#tsnc-estimate .nav .tel{font-family:var(--display);font-weight:800;color:var(--forest);text-decoration:none;white-space:nowrap}
+#tsnc-estimate .nav .btn{padding:.65rem 1.1rem;font-size:.9rem}
+#tsnc-estimate .burger{display:none;background:none;border:0;font-size:1.7rem;cursor:pointer;color:var(--forest)}
+#tsnc-estimate .hero{position:relative;background:linear-gradient(135deg,#2C6B22 0%,#3A962A 60%,#46A832 100%);color:#fff;overflow:hidden}
+#tsnc-estimate .hero .container{position:relative;z-index:2;padding-top:84px;padding-bottom:84px}
+#tsnc-estimate .hero .lede{color:#D9EFE1}
+#tsnc-estimate .hero h1 .hl{color:#CDF2BD}
+#tsnc-estimate .wisp{position:absolute;border-radius:50%;filter:blur(60px);opacity:.32;background:#BDEBA8;animation:drift 14s ease-in-out infinite alternate}
+#tsnc-estimate .w1{width:340px;height:340px;right:-80px;top:-90px}
+#tsnc-estimate .w2{width:260px;height:260px;right:22%;bottom:-120px;animation-delay:-6s}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-34px)}}
+@media (prefers-reduced-motion:reduce){#tsnc-estimate .wisp{animation:none}}
+#tsnc-estimate .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.4rem 0 1.8rem}
+#tsnc-estimate .chip{font-size:.82rem;font-weight:600;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);
+  padding:.35rem .8rem;border-radius:999px;color:#E8F8EE}
+#tsnc-estimate .chip .star{color:var(--gold)}
+#tsnc-estimate .hero .cta-row{display:flex;gap:.8rem;flex-wrap:wrap}
+#tsnc-estimate .grid{display:grid;gap:1.4rem}
+#tsnc-estimate .g2{grid-template-columns:repeat(2,1fr)} #tsnc-estimate .g3{grid-template-columns:repeat(3,1fr)} #tsnc-estimate .g4{grid-template-columns:repeat(4,1fr)}
+#tsnc-estimate .card{background:#fff;border:1px solid var(--line);border-radius:var(--rad);padding:1.5rem}
+#tsnc-estimate .card h3{margin-bottom:.4rem;color:var(--forest)}
+#tsnc-estimate .card p{font-size:.95rem;color:#3C5847}
+#tsnc-estimate .card.link{transition:transform .15s,box-shadow .15s;text-decoration:none;display:block}
+#tsnc-estimate .card.link:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+#tsnc-estimate .icon-dot{width:44px;height:44px;border-radius:12px;background:var(--mint);color:var(--leaf-dk);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.9rem}
+#tsnc-estimate .split{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center}
+#tsnc-estimate .split img{border-radius:var(--rad);box-shadow:var(--shadow)}
+#tsnc-estimate .steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+#tsnc-estimate .steps.three{grid-template-columns:repeat(3,1fr)}
+#tsnc-estimate .step{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:var(--rad);padding:1.4rem;position:relative}
+#tsnc-estimate .step::before{content:"0" counter(s);font-family:var(--mono);font-weight:600;color:var(--leaf);font-size:.95rem;
+  display:block;margin-bottom:.5rem;letter-spacing:.1em}
+#tsnc-estimate #estimate{scroll-margin-top:90px}
+#tsnc-estimate .est-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2.6rem;align-items:start}
+#tsnc-estimate .est-panel{background:#fff;border:1px solid var(--line);border-radius:var(--rad);padding:1.7rem;box-shadow:var(--shadow)}
+#tsnc-estimate .tabs{display:flex;gap:.4rem;margin-bottom:1.3rem;flex-wrap:wrap}
+#tsnc-estimate .tab{font-family:var(--display);font-weight:700;font-size:.92rem;padding:.55rem 1.1rem;border-radius:999px;
+  border:1.5px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
+#tsnc-estimate .tab[aria-selected="true"]{background:var(--forest);color:#fff;border-color:var(--forest)}
+#tsnc-estimate .row{display:flex;justify-content:space-between;align-items:center;padding:.8rem 0;border-bottom:1px dashed var(--line);gap:1rem}
+#tsnc-estimate .row:last-child{border-bottom:0}
+#tsnc-estimate .row .lbl b{display:block;font-size:.97rem}
+#tsnc-estimate .row .lbl small{color:#5B7766;font-size:.8rem}
+#tsnc-estimate .stepper{display:flex;align-items:center;gap:.6rem}
+#tsnc-estimate .stepper button{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--forest);background:#fff;color:var(--forest);
+  font-size:1.15rem;font-weight:700;cursor:pointer;line-height:1}
+#tsnc-estimate .stepper button:hover{background:var(--forest);color:#fff}
+#tsnc-estimate .stepper .val{font-family:var(--mono);min-width:1.6ch;text-align:center;font-weight:600}
+#tsnc-estimate .addon{display:flex;gap:.65rem;align-items:flex-start;padding:.55rem 0;font-size:.92rem}
+#tsnc-estimate .addon input{width:18px;height:18px;accent-color:var(--leaf);margin-top:.2rem}
+#tsnc-estimate .ticket{background:#fff;border-radius:6px 6px 14px 14px;box-shadow:var(--shadow);overflow:hidden;position:sticky;top:96px}
+#tsnc-estimate .ticket-head{background:var(--forest);color:#fff;padding:1rem 1.4rem;font-family:var(--mono);font-size:.8rem;letter-spacing:.12em;
+  text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+#tsnc-estimate .ticket-head .free{background:var(--gold);color:#3D2E04;border-radius:4px;padding:.15rem .5rem;font-weight:600}
+#tsnc-estimate .perf{height:14px;background:radial-gradient(circle at 7px 0,transparent 6px,#fff 6.5px) repeat-x;background-size:14px 14px;margin-top:-7px}
+#tsnc-estimate .ticket-body{padding:1.1rem 1.4rem 1.4rem;font-family:var(--mono);font-size:.88rem}
+#tsnc-estimate .tl{display:flex;justify-content:space-between;padding:.32rem 0;color:#35513F}
+#tsnc-estimate .tl.muted{color:#93AF9D}
+#tsnc-estimate .tl.tl-sub{border-top:1px solid var(--line);margin-top:.35rem;padding-top:.5rem;font-weight:700;color:var(--ink)}
+#tsnc-estimate .ticket-total{border-top:2px solid var(--ink);margin-top:.7rem;padding-top:.8rem;display:flex;justify-content:space-between;align-items:baseline}
+#tsnc-estimate .ticket-total .amt{font-size:1.7rem;font-weight:600;color:var(--leaf-dk)}
+#tsnc-estimate .ticket-note{font-size:.72rem;color:#7B937F;font-family:var(--body);margin-top:.7rem;line-height:1.45}
+#tsnc-estimate .lock{padding:1.1rem 1.4rem;background:var(--mint)}
+#tsnc-estimate .lock input{width:100%;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:10px;margin-bottom:.6rem;font-family:var(--body);font-size:.95rem}
+#tsnc-estimate .lock .btn{width:100%;justify-content:center}
+#tsnc-estimate .lock .ok{display:none;background:var(--leaf-dk);color:#fff;border-radius:10px;padding:.9rem;text-align:center;font-weight:600}
+#tsnc-estimate .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+#tsnc-estimate .rev{background:#fff;border:1px solid var(--line);border-radius:var(--rad);padding:1.4rem;display:flex;flex-direction:column;gap:.6rem}
+#tsnc-estimate .rev .stars{color:var(--gold);letter-spacing:.12em;font-size:.95rem}
+#tsnc-estimate .rev p{font-size:.93rem;color:#35513F;flex:1}
+#tsnc-estimate .rev .who{display:flex;justify-content:space-between;font-size:.82rem;color:#5B7766;font-weight:600}
+#tsnc-estimate .rev .src{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--leaf-dk)}
+#tsnc-estimate .agg{display:flex;gap:2.2rem;align-items:center;flex-wrap:wrap;margin:1.6rem 0 2.2rem}
+#tsnc-estimate .agg .big{font-family:var(--display);font-weight:800;font-size:3rem;line-height:1}
+#tsnc-estimate .agg .stars{color:var(--gold);font-size:1.25rem;letter-spacing:.14em}
+#tsnc-estimate .faq-cats{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.4rem 0 2.4rem}
+#tsnc-estimate .faq-cats a{text-decoration:none;font-weight:600;font-size:.88rem;border:1.5px solid var(--line);border-radius:999px;padding:.45rem 1rem;color:var(--ink)}
+#tsnc-estimate .faq-cats a:hover{border-color:var(--leaf);color:var(--leaf-dk)}
+#tsnc-estimate details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:.7rem;overflow:hidden}
+#tsnc-estimate summary{cursor:pointer;font-weight:700;font-family:var(--display);padding:1.05rem 1.3rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+#tsnc-estimate summary::after{content:"+";color:var(--leaf);font-size:1.3rem;font-weight:400}
+#tsnc-estimate details[open] summary::after{content:"–"}
+#tsnc-estimate details .a{padding:0 1.3rem 1.2rem;color:#3C5847;font-size:.96rem}
+#tsnc-estimate .faq-h{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--forest);margin:2.2rem 0 1rem}
+#tsnc-estimate .areas{columns:4;gap:1.5rem;list-style:none;font-size:.93rem;color:#3C5847}
+#tsnc-estimate .areas li{padding:.22rem 0;break-inside:avoid}
+#tsnc-estimate .areas li::before{content:"• ";color:var(--leaf)}
+#tsnc-estimate .band{background:var(--forest);color:#fff;border-radius:20px;padding:3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2.5rem;align-items:center}
+#tsnc-estimate .band h2{color:#fff}#tsnc-estimate .band p{color:#CDE8D6}
+#tsnc-estimate .band .q{border-left:3px solid var(--leaf);padding-left:1rem;margin:1.1rem 0;font-style:italic;color:#E8F8EE}
+/* packages & club */
+#tsnc-estimate .pkg{position:relative;overflow:hidden}
+#tsnc-estimate .pkg .tag{position:absolute;top:1rem;right:1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--mint);color:var(--leaf-dk);border-radius:4px;padding:.2rem .5rem;font-weight:600}
+#tsnc-estimate .pkg ul{list-style:none;margin:.8rem 0 1rem;font-size:.9rem;color:#3C5847}
+#tsnc-estimate .pkg ul li{padding:.2rem 0}#tsnc-estimate .pkg ul li::before{content:"✓ ";color:var(--leaf);font-weight:700}
+#tsnc-estimate .club{background:linear-gradient(135deg,var(--forest),#1E7A46);color:#fff;border-radius:20px;padding:3rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center}
+#tsnc-estimate .club h2{color:#fff}#tsnc-estimate .club p{color:#D9EFE1}
+#tsnc-estimate .club .perks{list-style:none;margin-top:1.1rem;color:#E8F8EE}
+#tsnc-estimate .club .perks li{padding:.3rem 0}#tsnc-estimate .club .perks li::before{content:"✦ ";color:var(--gold)}
+#tsnc-estimate .club .card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
+#tsnc-estimate .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+#tsnc-estimate .form-grid .full{grid-column:1/-1}
+#tsnc-estimate .fld label{font-size:.83rem;font-weight:600;display:block;margin-bottom:.3rem;color:var(--forest)}
+#tsnc-estimate .fld input, #tsnc-estimate .fld select, #tsnc-estimate .fld textarea{width:100%;padding:.75rem .95rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:.97rem;background:#fff}
+#tsnc-estimate .fld textarea{min-height:110px;resize:vertical}
+#tsnc-estimate .note{font-size:.8rem;color:#7B937F}
+#tsnc-estimate .posts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+#tsnc-estimate .post{background:#fff;border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;display:flex;flex-direction:column}
+#tsnc-estimate .post img{aspect-ratio:16/10;object-fit:cover;width:100%}
+#tsnc-estimate .post .pb{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+#tsnc-estimate .post time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf-dk)}
+#tsnc-estimate .post h3 a{color:var(--forest);text-decoration:none}
+#tsnc-estimate .post h3 a:hover{text-decoration:underline}
+#tsnc-estimate .post p{font-size:.9rem;color:#3C5847;flex:1}
+#tsnc-estimate .nap{display:flex;flex-direction:column;gap:1rem}
+#tsnc-estimate .nap .card{display:flex;gap:1rem;align-items:flex-start}
+#tsnc-estimate .nap .card .icon-dot{margin:0;flex:none}
+#tsnc-estimate .emg{background:#FFF6E5;border:1.5px solid #F2D389;border-radius:12px;padding:1rem 1.3rem;display:flex;gap:.9rem;align-items:center;font-size:.94rem}
+#tsnc-estimate .emg b{color:#8A6206}
+#tsnc-estimate .code{font-family:var(--mono);font-weight:600;background:var(--mint);color:var(--leaf-dk);border-radius:6px;padding:.1rem .5rem;font-size:.85rem}
+#tsnc-estimate footer.site{background:var(--ink);color:#B8D2C2}
+#tsnc-estimate footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.1fr;gap:2.4rem;padding:64px 0 40px}
+#tsnc-estimate footer h4{font-family:var(--display);color:#fff;font-size:.95rem;margin-bottom:1rem;letter-spacing:.04em}
+#tsnc-estimate footer ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+#tsnc-estimate footer a{color:#B8D2C2;text-decoration:none;font-size:.92rem}
+#tsnc-estimate footer a:hover{color:#CDF2BD}
+#tsnc-estimate footer .logo img{height:44px;margin-bottom:1rem;filter:brightness(0) invert(1)}
+#tsnc-estimate footer .blurb{font-size:.9rem;line-height:1.65}
+#tsnc-estimate .legal{border-top:1px solid rgba(255,255,255,.12);padding:1.2rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.82rem}
+#tsnc-estimate .legal a{margin-left:1.2rem}
+#tsnc-estimate .foot-emg{background:#0B2516;padding:.8rem 0;font-size:.88rem;text-align:center}
+#tsnc-estimate .foot-emg a{color:var(--gold);font-weight:700}
+#tsnc-estimate .mab{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:#fff;border-top:1px solid var(--line);
+  padding:.6rem .9rem;gap:.7rem;box-shadow:0 -8px 24px rgba(17,48,31,.12)}
+#tsnc-estimate .mab .btn{flex:1;justify-content:center;font-size:.95rem;padding:.8rem}
+@media(max-width:980px){
+  #tsnc-estimate .g4, #tsnc-estimate .steps{grid-template-columns:repeat(2,1fr)}
+  #tsnc-estimate .g3, #tsnc-estimate .rev-grid, #tsnc-estimate .posts, #tsnc-estimate .steps.three{grid-template-columns:repeat(2,1fr)}
+  #tsnc-estimate .split, #tsnc-estimate .est-wrap, #tsnc-estimate .band, #tsnc-estimate .club{grid-template-columns:1fr}
+  #tsnc-estimate .areas{columns:3}
+  #tsnc-estimate footer .cols{grid-template-columns:1fr 1fr}
+  #tsnc-estimate .nav ul{position:fixed;inset:74px 0 auto 0;background:#fff;flex-direction:column;align-items:stretch;
+    padding:1rem 1.4rem 1.6rem;display:none;border-bottom:1px solid var(--line);max-height:calc(100vh - 74px);overflow:auto}
+  #tsnc-estimate .nav ul.open{display:flex}
+  #tsnc-estimate .nav .sub{position:static;display:none;box-shadow:none;border:0;padding-left:1rem}
+  #tsnc-estimate .nav li.open .sub{display:flex}
+  #tsnc-estimate .burger{display:block;margin-left:auto}
+  #tsnc-estimate .nav .actions{display:none}
+  #tsnc-estimate .ticket{position:static}
+}
+@media(max-width:640px){
+  #tsnc-estimate .g2, #tsnc-estimate .g3, #tsnc-estimate .g4, #tsnc-estimate .steps, #tsnc-estimate .steps.three, #tsnc-estimate .rev-grid, #tsnc-estimate .posts, #tsnc-estimate .form-grid{grid-template-columns:1fr}
+  #tsnc-estimate .areas{columns:2}
+  #tsnc-estimate footer .cols{grid-template-columns:1fr}
+  #tsnc-estimate .mab{display:flex}
+  #tsnc-estimate .band, #tsnc-estimate .club{padding:2rem 1.5rem}
+  #tsnc-estimate .strip .container{justify-content:center;text-align:center}
+}
+
+.exit-overlay{position:fixed;inset:0;z-index:200;background:rgba(17,48,31,.55);display:flex;align-items:center;justify-content:center;padding:20px;animation:fadein .2s ease}
+.exit-overlay[hidden]{display:none}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.exit-card{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:28px 26px;box-shadow:0 24px 60px rgba(0,0,0,.3);position:relative;animation:pop .22s ease}
+@keyframes pop{from{transform:translateY(12px) scale(.98);opacity:0}to{transform:none;opacity:1}}
+.exit-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.6rem;line-height:1;color:#9AB0A0;cursor:pointer}
+.exit-x:hover{color:#444}
+#tsnc-estimate .hero.has-img .container{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center}
+#tsnc-estimate .hero .hero-photo{border-radius:18px;box-shadow:0 20px 50px rgba(8,28,18,.35);width:100%;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:880px){#tsnc-estimate .hero.has-img .container{grid-template-columns:1fr}#tsnc-estimate .hero .hero-photo{display:none}}
+#tsnc-estimate .logobar{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+#tsnc-estimate .logobar .container{padding-top:30px;padding-bottom:30px}
+#tsnc-estimate .logobar p{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#7B937F;text-align:center;margin-bottom:1.1rem}
+#tsnc-estimate .logos{display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;justify-content:center;align-items:center}
+#tsnc-estimate .logos span{font-family:var(--display);font-weight:700;color:#456;opacity:.78;font-size:1.02rem}
+#tsnc-estimate .logo-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:.4rem}
+#tsnc-estimate .logo-plate{display:flex;align-items:center;justify-content:center;text-align:center;min-height:74px;
+  padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:12px;
+  transition:border-color .15s,box-shadow .15s}
+#tsnc-estimate .logo-plate:hover{border-color:var(--leaf);box-shadow:var(--shadow)}
+#tsnc-estimate .logo-plate span{font-family:var(--display);font-weight:700;color:#2C4838;font-size:.96rem;line-height:1.15}
+#tsnc-estimate .logo-plate img{max-height:42px;max-width:100%;width:auto;object-fit:contain;filter:grayscale(1);opacity:.85}
+#tsnc-estimate .logo-plate:hover img{filter:none;opacity:1}
+@media(max-width:860px){#tsnc-estimate .logo-wall{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){#tsnc-estimate .logo-wall{grid-template-columns:repeat(2,1fr)}}
+#tsnc-estimate .eqbox{margin-top:.8rem;border-top:1px dashed var(--line);padding-top:.9rem}
+#tsnc-estimate .eqbox summary{padding:0;font-family:var(--body);font-weight:600;font-size:.88rem;color:var(--leaf-dk);cursor:pointer;list-style:none}
+#tsnc-estimate .eqbox summary::after{content:""}
+#tsnc-estimate .eqbox[open] summary{margin-bottom:.6rem}
+#tsnc-estimate .eqbox input{width:100%;padding:.65rem .85rem;border:1.5px solid var(--line);border-radius:10px;margin-bottom:.5rem;font-family:var(--body)}
+#tsnc-estimate .eqbox .btn{width:100%;justify-content:center}
+#tsnc-estimate .eqbox .ok{display:none;background:var(--leaf-dk);color:#fff;border-radius:10px;padding:.7rem;text-align:center;font-weight:600;font-size:.9rem}
+
+/* highlighted savings line in the estimate ticket */
+#tsnc-estimate .tl.tl-save{background:#EAF7E4;border-radius:8px;padding:.45rem .6rem;margin:.25rem -.6rem;font-weight:700;color:#2E7A20}
+#tsnc-estimate .tl.tl-save span:last-child{color:#2E7A20}
+
+#tsnc-estimate .tl.tl-nudge{color:#2E7A20;font-style:italic;font-size:.9em}
+#tsnc-estimate .tl.tl-head{margin-top:.6rem;padding-top:.5rem;border-top:1px dashed var(--line);font-weight:700;color:var(--ink)}
+
+/* Reserve form — step 2 (revealed once name/phone/email are filled) */
+#tsnc-estimate .lstep2{display:none;margin-top:.6rem;padding-top:.8rem;border-top:1px dashed var(--line)}
+#tsnc-estimate .lstep2.show{display:block;animation:fadein .25s ease}
+#tsnc-estimate .lstep2-h{font-weight:700;color:var(--ink);margin:0 0 .6rem;font-size:.95rem}
+#tsnc-estimate .lstep2-h span{font-weight:400;color:#7B937F;font-size:.85rem}
+#tsnc-estimate .lstep2 input[type=text]{width:100%;margin-bottom:.55rem}
+#tsnc-estimate .ldate{margin:.2rem 0 .6rem}
+#tsnc-estimate .ldate > label{display:block;font-size:.9rem;font-weight:600;color:#3C5847;margin-bottom:.35rem}
+#tsnc-estimate .ldate input[type="date"]{display:block;width:100%;min-height:48px;padding:.7rem .9rem;
+  border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:1rem;
+  color:var(--ink);background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%232E7A20' stroke-width='2' stroke-linecap='round'><rect x='3' y='5' width='18' height='16' rx='2'/><path d='M8 3v4M16 3v4M3 10h18'/></svg>") no-repeat right .8rem center;
+  background-size:20px;appearance:none;-webkit-appearance:none}
+#tsnc-estimate .ldate input[type="date"]:focus{outline:none;border-color:var(--leaf-dk)}
+#tsnc-estimate .ldate input[type="date"]::-webkit-calendar-picker-indicator{opacity:0;width:100%;height:100%;
+  position:absolute;left:0;top:0;cursor:pointer}
+#tsnc-estimate .ldate input[type="date"]{position:relative}
+#tsnc-estimate .datequick{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.45rem}
+#tsnc-estimate .datequick button{flex:1 1 0;min-width:84px;padding:.45rem .3rem;border:1.5px solid var(--line);
+  border-radius:10px;background:#fff;cursor:pointer;font-family:var(--body);font-weight:700;
+  font-size:.82rem;color:var(--ink);line-height:1.2}
+#tsnc-estimate .datequick button small{display:block;font-weight:400;font-size:.72rem;color:#7B937F}
+#tsnc-estimate .datequick button.on{border-color:var(--leaf-dk);background:#EAF7E4;color:var(--leaf-dk)}
+#tsnc-estimate .dateerr{font-size:.82rem;color:#B3471F;font-weight:600;margin:.35rem 0 0}
+#tsnc-estimate .ltime{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-bottom:.6rem}
+#tsnc-estimate .ltime label{position:relative;cursor:pointer}
+#tsnc-estimate .ltime input{position:absolute;opacity:0;inset:0}
+#tsnc-estimate .ltime span{display:block;text-align:center;padding:.5rem .3rem;border:1.5px solid var(--line);border-radius:10px;font-size:.82rem;font-weight:700;color:var(--ink);line-height:1.15}
+#tsnc-estimate .ltime small{font-weight:400;color:#7B937F}
+#tsnc-estimate .ltime input:checked+span{border-color:var(--leaf);background:#EAF7E4;color:var(--leaf-dk)}
+@media(max-width:420px){#tsnc-estimate .ltime{grid-template-columns:repeat(2,1fr)}}
+/* Rug rows */
+#tsnc-estimate .rugrow{border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;margin-bottom:.6rem;background:#fff}
+#tsnc-estimate .rugtop{display:flex;gap:.6rem;align-items:center;margin-bottom:.55rem}
+#tsnc-estimate .rugtop select{flex:1;padding:.6rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);background:#fff}
+#tsnc-estimate .rugdel{background:none;border:0;color:#B3471F;font-weight:700;cursor:pointer;font-size:.85rem}
+#tsnc-estimate .quick{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.5rem}
+#tsnc-estimate .quick .qs{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:.32rem .7rem;font-weight:700;font-size:.85rem;cursor:pointer;color:var(--ink)}
+#tsnc-estimate .quick .qs.on{background:var(--leaf);border-color:var(--leaf);color:#fff}
+#tsnc-estimate .rugdims{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
+#tsnc-estimate .rugdims input{width:90px;padding:.55rem .7rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body)}
+#tsnc-estimate .rugdims select{padding:.55rem .6rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);background:#fff}
+#tsnc-estimate .rugsq{min-width:60px;font-weight:700;color:var(--leaf-dk)}
+#tsnc-estimate .rugaddons{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-top:.5rem}
+#tsnc-estimate .rugaddons label{position:relative;cursor:pointer}
+#tsnc-estimate .rugaddons input{position:absolute;opacity:0;inset:0}
+#tsnc-estimate .rugaddons span{display:block;padding:.5rem .55rem;border:1.5px solid var(--line);border-radius:10px;font-size:.85rem;line-height:1.2}
+#tsnc-estimate .rugaddons small{color:#7B937F;font-weight:400}
+#tsnc-estimate .rugaddons input:checked+span{border-color:var(--leaf);background:#EAF7E4}
+@media(max-width:480px){#tsnc-estimate .rugaddons{grid-template-columns:1fr}}
+#tsnc-estimate #detailsform{display:none}
+#tsnc-estimate #detailsform.show{display:block;border-top:0;padding-top:0;margin-top:0}
+#tsnc-estimate #l-done{display:none}
+#tsnc-estimate .rugaddons{grid-template-columns:repeat(2,1fr)}
+#tsnc-estimate .rugaddons label.bundle span{border-color:var(--leaf);background:#F3FAEF}
+#tsnc-estimate .rugaddons label.bundle input:checked+span{background:var(--leaf);color:#fff}
+#tsnc-estimate .rugaddons label.bundle input:checked+span small{color:#E4F5DC}
+
+
+/* ---- v2.1: upholstery presets, split-total rows, step-2 building notice ---- */
+#tsnc-estimate .presets{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin:.2rem 0 .9rem}
+#tsnc-estimate .presets-h{font-family:var(--display);font-weight:700;font-size:.9rem;margin-right:.2rem}
+#tsnc-estimate .preset{display:flex;flex-direction:column;align-items:center;gap:.1rem;padding:.45rem .7rem;
+  border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;
+  font-family:var(--body);font-weight:600;font-size:.85rem;line-height:1.15;transition:.15s}
+#tsnc-estimate .preset small{font-weight:400;font-size:.72rem;color:#6B7A6E}
+#tsnc-estimate .preset:hover{border-color:var(--leaf-dk)}
+#tsnc-estimate .preset.just{background:#EAF7E4;border-color:var(--leaf-dk)}
+#tsnc-estimate .tl.tl-tot{border-top:2px solid var(--leaf-dk);margin-top:.4rem;padding-top:.55rem;
+  font-weight:800;color:var(--leaf-dk);font-size:1.02rem}
+#tsnc-estimate .tl.tl-tot span:last-child{color:var(--leaf-dk)}
+#tsnc-estimate .tl.tl-est{display:block;font-size:.78rem;line-height:1.4;color:#6B7A6E;margin-top:.45rem}
+#tsnc-estimate .tl.tl-est span:last-child{display:none}
+#tsnc-estimate .bnote{background:#FFF4D6;border-radius:8px;padding:.6rem .8rem;margin:.1rem 0 .55rem;line-height:1.45}
+
+/* ===== Email verification extras ===== */
+#tsnc-estimate #tsnc-verify-wrap{ margin-bottom: .3rem; }
+#tsnc-estimate #tsnc-code-wrap input{ font-size: 1.2rem; letter-spacing: .2em; }
+#tsnc-estimate #tsnc-send-code{ background: transparent; color: var(--leaf-dk); border-color: var(--line); }
+#tsnc-estimate #tsnc-send-code:hover{ background: var(--mint); }
+</style>
+
+<section id="tsnc-estimate" class="mint"><div class="tsnc-container">
+  <span class="eyebrow">Residential estimate · Toronto &amp; GTA</span>
+  <h2>See your real price in 60 seconds</h2>
+  <p class="lede" style="margin:.7rem 0 .5rem">Your minimum covers travel, setup and <b>3 standard areas</b> — a room, a flight of stairs or a sofa seat each count as one. Every online booking gets <b>$50 off</b>.</p>
+  <p class="note" style="margin:0 0 2rem">Commercial or property manager? <a href="commercial.html">Request a quote →</a></p>
+  <div class="est-wrap">
+    <div class="est-panel">
+      <div class="row" style="border-bottom:1px solid var(--line);padding-top:0">
+        <div class="lbl" style="flex:1"><b>Your area</b><small id="tsnc-zonelabel">Toronto pricing shown — choose your area for your exact price</small></div>
+        <select id="tsnc-area-in" aria-label="Your area" style="min-width:190px;padding:.6rem .8rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);background:#fff">
+          <option value="">Choose your area…</option>
+          <optgroup label="Toronto & boroughs"><option value="Toronto (Old Toronto / Downtown)">Toronto (Old Toronto / Downtown)</option><option value="North York">North York</option><option value="Scarborough">Scarborough</option><option value="Etobicoke">Etobicoke</option><option value="East York">East York</option><option value="York">York</option></optgroup><optgroup label="Vaughan & nearby"><option value="Vaughan">Vaughan</option><option value="Thornhill">Thornhill</option><option value="Woodbridge">Woodbridge</option><option value="Maple">Maple</option><option value="King City">King City</option><option value="Kleinburg">Kleinburg</option></optgroup><optgroup label="Mississauga · Ajax · Pickering"><option value="Mississauga">Mississauga</option><option value="Ajax">Ajax</option><option value="Pickering">Pickering</option></optgroup><optgroup label="York Region · Brampton · Oakville · Barrie"><option value="Richmond Hill">Richmond Hill</option><option value="Markham">Markham</option><option value="Stouffville">Stouffville</option><option value="Uxbridge">Uxbridge</option><option value="Newmarket">Newmarket</option><option value="Aurora">Aurora</option><option value="Bradford">Bradford</option><option value="Brampton">Brampton</option><option value="Oakville">Oakville</option><option value="Barrie">Barrie</option><option value="Innisfil">Innisfil</option></optgroup><optgroup label="Halton · Durham · outer GTA"><option value="Burlington">Burlington</option><option value="Milton">Milton</option><option value="Whitby">Whitby</option><option value="Oshawa">Oshawa</option><option value="Georgina / Keswick">Georgina / Keswick</option><option value="Caledon / Bolton">Caledon / Bolton</option><option value="Halton Hills / Georgetown">Halton Hills / Georgetown</option><option value="Courtice / Bowmanville">Courtice / Bowmanville</option></optgroup><optgroup label="Not listed?"><option value="Other / Not sure">Other / Not sure</option></optgroup>
+        </select>
+      </div>
+      <div class="tabs" role="tablist" style="margin-top:1.2rem">
+        <button class="tab" role="tab" data-tab="carpet" aria-selected="true">Carpet</button>
+        <button class="tab" role="tab" data-tab="upholstery" aria-selected="false">Upholstery</button>
+        <button class="tab" role="tab" data-tab="rugs" aria-selected="false">Area Rugs</button>
+      </div>
+      <div class="pane" data-pane="carpet">
+        <div class="row"><div class="lbl"><b>Rooms</b><small>Up to 150 ft² — a typical bedroom, dining room or den</small></div>
+      <div class="stepper" data-key="rooms"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Large rooms</b><small>151–250 ft² — an open-concept living area or rec room. <b>Bigger than that? Count it as two.</b></small></div>
+      <div class="stepper" data-key="largeRooms"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Hallways</b><small>Per hallway</small></div>
+      <div class="stepper" data-key="hallways"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Stair sets</b><small>Per flight of stairs</small></div>
+      <div class="stepper" data-key="stairs"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+      </div>
+      <div class="pane" data-pane="upholstery" hidden>
+        <div class="presets">
+          <span class="presets-h">Quick add</span>
+          <button type="button" class="preset" data-seats="2">Loveseat<small>2 seats</small></button>
+          <button type="button" class="preset" data-seats="3">Sofa<small>3 seats</small></button>
+          <button type="button" class="preset" data-seats="4">Large sofa<small>4 seats</small></button>
+          <button type="button" class="preset" data-seats="2" data-chaise="1">Sectional<small>2 seats + chaise</small></button>
+          <button type="button" class="preset" data-seats="3" data-chaise="1">Sectional<small>3 seats + chaise</small></button>
+        </div>
+        <div class="row"><div class="lbl"><b>Seats — how many people can sit on it</b><small>Count people, not cushions. A single long cushion that seats two counts as <b>two seats</b>.</small></div>
+      <div class="stepper" data-key="seats"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Sectional chaise</b><small>The long lie-down end of a sectional. Most sectionals have one. Count the regular seats above.</small></div>
+      <div class="stepper" data-key="chaise"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Recliners</b><small>Per recliner</small></div>
+      <div class="stepper" data-key="recliner"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Pull-out mechanism</b><small>The fold-out bed inside a sofa</small></div>
+      <div class="stepper" data-key="pullout"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Ottoman</b><small>Standard or storage</small></div>
+      <div class="stepper" data-key="ottoman"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Footstool / small ottoman</b></div>
+      <div class="stepper" data-key="footstool"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Dining chairs · bench seats · office chairs · bar stools</b><small>Per seat</small></div>
+      <div class="stepper" data-key="diningSeats"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Mattress — twin / single / double</b></div>
+      <div class="stepper" data-key="mattressS"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Mattress — queen</b></div>
+      <div class="stepper" data-key="mattressQ"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+        <div class="row"><div class="lbl"><b>Mattress — king</b></div>
+      <div class="stepper" data-key="mattressK"><button data-d="-" aria-label="Fewer">−</button><span class="val">0</span><button data-d="+" aria-label="More">+</button></div></div>
+      <label class="addon" style="margin-top:.6rem"><input type="checkbox" id="tsnc-leather"> <span><b>Some or all of this is leather</b> — same price, different process</span></label>
+      </div>
+      <div class="pane" data-pane="rugs" hidden>
+        <div id="tsnc-rugrows"></div>
+        <button id="tsnc-addrug" class="btn btn-ghost" type="button" style="padding:.5rem 1rem;margin-top:.4rem">+ Add another rug</button>
+        <div style="margin-top:1rem;border-top:1px dashed var(--line);padding-top:.9rem">
+          <b style="font-family:var(--display);font-size:.95rem">Rug treatments <span class="note" style="font-weight:400">(per ft², added to the wash)</span></b>
+          <div class="rugaddons">
+            <label><input type="checkbox" name="rugadd" value="enzyme"> <span><b>Enzyme</b> · $0.75<br><small>Pet urine &amp; odour</small></span></label>
+            <label><input type="checkbox" name="rugadd" value="stain"> <span><b>Stain Shield</b> · $1.00<br><small>Repels future spills</small></span></label>
+            <label class="bundle"><input type="checkbox" name="rugadd" value="bundle"> <span><b>Enzyme + Stain Shield</b> · $1.50<br><small>Save $0.25/ft² — best value</small></span></label>
+            <label><input type="checkbox" name="rugadd" value="moth"> <span><b>Moth</b> · $0.75<br><small>Wool &amp; natural fibres · added separately</small></span></label>
+          </div>
+        </div>
+        <p class="note" style="margin-top:.9rem">Collected by our <b>dedicated rug crew</b> on a separate visit and washed at our plant — back in 7–12 days, pickup &amp; delivery free. <b>Please have rugs rolled and ready.</b></p>
+      </div>
+      <div id="tsnc-tiers" style="margin-top:1.1rem;border-top:1px solid var(--line);padding-top:1rem">
+        <b style="font-family:var(--display)">Protection &amp; freshness <span class="note" style="font-weight:400">(carpet &amp; upholstery · applies to every item in your quote · want it on just some? tell your technician)</span></b>
+        <label class="addon"><input type="radio" name="tier" value="none" checked> <span><b>Essential Clean — included</b><br><span class="note">Deep clean + pre-treatment + spot &amp; stain treatment. Always free.</span></span></label>
+        <label class="addon"><input type="radio" name="tier" value="healthy"> <span><b>Healthy Home — $25 per item</b><br><span class="note">Sanitizer for a hygienic finish, plus enzyme treatment where there's pet odour.</span></span></label>
+        <label class="addon"><input type="radio" name="tier" value="total"> <span><b>Total Protection — $35 per item</b> <span class="note">(most booked)</span><br><span class="note">Healthy Home + Stain Shield, so future spills blot away instead of soaking in.</span></span></label>
+      </div>
+      <label class="addon" style="margin-top:.8rem;border-top:1px solid var(--line);padding-top:1rem"><input type="checkbox" id="tsnc-returning"> <span><b>I'm an existing customer</b> — we'll look you up for faster booking</span></label>
+      </div>
+    <div class="ticket">
+      <div class="ticket-head"><span>Your Estimate</span><span class="free">Free · No obligation</span></div>
+      <div class="perf"></div>
+      <div class="ticket-body">
+        <div id="tsnc-tlines"></div>
+        <p class="note" id="tsnc-commnote" style="display:none;background:#FFF4D6;border-radius:8px;padding:.6rem .8rem;margin:.6rem 0"></p>
+        <div class="ticket-total"><span>Estimated total</span><span class="amt" id="tsnc-tamt">$0</span></div>
+        <p class="note" id="tsnc-clubnote" style="display:none;margin:.6rem 0 0;color:var(--leaf-dk)">Cleaning twice a year? <a href="fresh-club.html">Fresh Club members save 15–20%.</a></p>
+        <p class="ticket-note">This is your price for standard conditions, with travel and setup included. Your technician confirms the final count and may adjust for size, soiling or the amount of product required — always with your agreement before starting. A small number of buildings with restricted loading access, and walk-ups with no elevator, carry a disclosed access charge.</p>
+      </div>
+      <div class="lock">
+        <form id="tsnc-lockform">
+          <input id="tsnc-l-name" type="text" placeholder="Your name" required autocomplete="name">
+          <input id="tsnc-l-phone" type="tel" placeholder="Phone number" required autocomplete="tel">
+          <input id="tsnc-l-email" type="email" placeholder="Email" required autocomplete="email">
+          <div id="tsnc-verify-wrap" style="margin-bottom:.4rem">
+            <button type="button" id="tsnc-send-code" class="btn btn-ghost" style="width:100%;justify-content:center;font-size:.9rem;padding:.55rem">Send verification code</button>
+            <div id="tsnc-code-wrap" style="display:none;margin-top:.4rem">
+              <div style="display:flex;gap:.4rem">
+                <input id="tsnc-verify-code" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="4-digit code" style="flex:1;padding:.7rem .9rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);font-size:1rem">
+                <button type="button" id="tsnc-verify-btn" class="btn btn-ghost" style="white-space:nowrap">Verify</button>
+              </div>
+            </div>
+            <p id="tsnc-verify-msg" style="font-size:.82rem;margin:.35rem 0 0;text-align:center"></p>
+          </div>
+          <button class="btn btn-cta" type="submit">Reserve My Spot</button>
+          <p class="note" style="text-align:center;margin-top:.5rem">No payment now · Free to cancel or reschedule up to 24 hours before</p>
+          <p class="note" id="tsnc-l-areaerr" style="display:none;color:#B3471F;text-align:center;font-weight:600">Please choose your area above so we can confirm your exact price.</p>
+        </form>
+        <form id="tsnc-detailsform" class="lstep2">
+          <p class="lstep2-h">Got it — your request is in. <span>One more minute saves us a call:</span></p>
+          <input id="tsnc-l-address" type="text" placeholder="Street address" autocomplete="street-address">
+          <input id="tsnc-l-unit" type="text" placeholder="Unit / buzzer (if any)">
+          <p class="note bnote" id="tsnc-l-buildingnote" style="display:none"></p>
+          <div class="ldate">
+            <label for="tsnc-l-date">Preferred date</label>
+            <div class="datequick" id="tsnc-l-datequick"></div>
+            <input id="tsnc-l-date" type="date">
+            <p class="dateerr" id="tsnc-l-dateerr" style="display:none">We're closed Sundays — please pick another day.</p>
+          </div>
+          <div class="ltime" role="radiogroup" aria-label="Preferred time">
+            <label><input type="radio" name="l-time" value="Morning (8–11)"><span>Morning<br><small>8–11</small></span></label>
+            <label><input type="radio" name="l-time" value="Midday (11–2)"><span>Midday<br><small>11–2</small></span></label>
+            <label><input type="radio" name="l-time" value="Afternoon (2–5)"><span>Afternoon<br><small>2–5</small></span></label>
+            <label><input type="radio" name="l-time" value="Flexible"><span>Flexible<br><small>any time</small></span></label>
+          </div>
+          <input id="tsnc-l-notes" type="text" placeholder="Parking, elevator, pets — anything we should know">
+          <select id="tsnc-l-source" aria-label="How did you hear about us" style="width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:10px;font-family:var(--body);margin-bottom:.55rem;background:#fff">
+            <option value="">How did you hear about us? (optional)</option>
+            <option>Google search</option><option>Google Ads</option><option>HomeStars</option><option>Referral from a friend</option><option>Repeat customer</option><option>Instagram / Facebook</option><option>Saw the truck</option><option>Other</option>
+          </select>
+          <label class="note" style="display:block;margin-bottom:.6rem">Have a stain or rug you're unsure about? Add a photo (optional)<input id="tsnc-l-photo" type="file" accept="image/*" multiple style="display:block;margin-top:.3rem"></label>
+          <button class="btn btn-cta" type="submit">Save details</button>
+          <button class="btn btn-ghost" type="button" id="tsnc-l-skip" style="margin-top:.4rem">Skip for now</button>
+        </form>
+        <div class="ok" id="tsnc-l-done">Thanks — we'll email you within 1–2 business hours (Mon–Fri 9–6, Sat 9–3) to confirm your time. ✓</div>
+        <details class="eqbox">
+          <summary>📧 Not ready to book? Email me this quote</summary>
+          <form id="tsnc-emailquote">
+            <input id="tsnc-eq-email" type="email" placeholder="Your email" required autocomplete="email">
+            <button class="btn btn-ghost" type="submit">Email My Quote + $50 Offer</button>
+            <div class="ok">Sent! Check your inbox for your quote and new-customer offer. ✓</div>
+          </form>
+        </details>
+        <p class="note" style="margin-top:.6rem">Something not listed — boat, RV, anything unusual? <a href="sms:4167552528">Text</a>, <a href="mailto:info@torontosteamnclean.ca">email</a> or <a href="tel:4167552528">call</a> us the details.</p>
+        <p class="note" style="margin-top:.4rem">Prefer to talk? Call or text <a href="sms:4167552528"><b>416 755 2528</b></a> — send a photo of your stain, sofa or rug for a quick quote.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tsnc-exitmodal" class="exit-overlay" role="dialog" aria-modal="true" aria-labelledby="tsnc-exit-h" hidden>
+  <div class="exit-card">
+    <button class="exit-x" aria-label="Close" onclick="document.getElementById('tsnc-exitmodal').hidden=true">×</button>
+    <span class="eyebrow">Wait — don't lose your quote</span>
+    <h3 id="tsnc-exit-h" style="margin:.3rem 0 .5rem">Want us to email this estimate?</h3>
+    <p class="note" style="margin-bottom:1rem">We'll send your quote so it's ready when you are — plus your <b>$50 new-customer offer</b>. No pressure, no spam.</p>
+    <form id="tsnc-exitform">
+      <input id="tsnc-exit-email" type="email" placeholder="Your email" required autocomplete="email" style="width:100%;padding:.75rem .9rem;border:1.5px solid var(--line);border-radius:10px;margin-bottom:.6rem;font-family:var(--body)">
+      <button class="btn btn-cta" type="submit" style="width:100%;justify-content:center">Email My Quote + $50 Offer</button>
+      <div class="exit-ok" style="display:none;background:var(--leaf-dk);color:#fff;border-radius:10px;padding:.9rem;text-align:center;font-weight:600">Sent! Check your inbox. ✓</div>
+    </form>
+    <p class="note" style="text-align:center;margin-top:.8rem">Or call/text <a href="sms:4167552528"><b>416 755 2528</b></a> to book now.</p>
+  </div>
+</div>
+</section>
+
+<script>
+/* TSNC_AJAX is injected by wp_localize_script in the plugin.
+   This fallback prevents errors if the script loads before WP does. */
+if(typeof window.TSNC_AJAX === 'undefined'){
+  window.TSNC_AJAX = {
+    url: '/wp-admin/admin-ajax.php',
+    nonce: ''
+  };
+}
+(function(){'use strict';
+
+// ============ EMAIL VERIFICATION (v3.5 carry-forward) ============
+window.__tsncEmailVerified = false;
+window.__tsncVerifyRequired = true; // set false to disable verification
+
+function tsncMsg(text,ok){
+  const msg=document.getElementById("tsnc-verify-msg");
+  if(msg){msg.textContent=text;msg.style.color=ok?"#4a7c59":"#B3471F";}
+}
+function tsncPost(payload){
+  return fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
+    method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:new URLSearchParams(payload).toString()
+  }).then(r=>r.json());
+}
+function tsncErr(d,fallback){
+  return (d&&d.data&&d.data.msg)?d.data.msg:fallback;
+}
+
+// Validates name / phone / email. Returns true if all are OK, otherwise flags the first bad field.
+function tsncValidateContact(){
+  const nameEl=document.getElementById("tsnc-l-name");
+  const phoneEl=document.getElementById("tsnc-l-phone");
+  const emailEl=document.getElementById("tsnc-l-email");
+  [nameEl,phoneEl,emailEl].forEach(el=>{if(el)el.style.borderColor="";});
+  const bad=(el,text)=>{if(el){el.style.borderColor="#B3471F";el.focus();}tsncMsg(text,false);return false;};
+  if(!nameEl||!nameEl.value.trim()) return bad(nameEl,"Please enter your name.");
+  if(!phoneEl||phoneEl.value.replace(/\D/g,"").length<10) return bad(phoneEl,"Please enter a valid phone number.");
+  if(!emailEl||!emailEl.value.trim()||!emailEl.checkValidity()) return bad(emailEl,"Please enter a valid email address.");
+  return true;
+}
+
+function tsncSendVerifyCode(){
+  if(!tsncValidateContact()) return;
+  const emailEl=document.getElementById("tsnc-l-email");
+  const nameEl=document.getElementById("tsnc-l-name");
+  const btn=document.getElementById("tsnc-send-code");
+  const label=btn?btn.dataset.label||btn.textContent:"";
+  if(btn){btn.dataset.label=label;btn.disabled=true;btn.textContent="Sending…";}
+  tsncPost({
+    action:"tsnc_send_code",
+    nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+    email:emailEl.value.trim(),
+    name:nameEl.value.trim()
+  }).then(d=>{
+    if(d.success){
+      const codeWrap=document.getElementById("tsnc-code-wrap");
+      if(codeWrap)codeWrap.style.display="block";
+      window.__tsncCodeSentTo=emailEl.value.trim().toLowerCase();
+      tsncMsg("Code sent — check your inbox (and spam folder).",true);
+      if(btn)btn.textContent="Resend code";
+      const codeEl=document.getElementById("tsnc-verify-code"); if(codeEl)codeEl.focus();
+    } else {
+      tsncMsg(tsncErr(d,"Error sending code. Please try again."),false);
+      if(btn)btn.textContent=label;
+    }
+    if(btn)btn.disabled=false;
+  }).catch(()=>{
+    tsncMsg("Error sending code — please try again.",false);
+    if(btn){btn.disabled=false;btn.textContent=label;}
+  });
+}
+
+function tsncUnlockReserve(){
+  const codeEl=document.getElementById("tsnc-verify-code");
+  const emailEl=document.getElementById("tsnc-l-email");
+  if(!codeEl||!emailEl) return;
+  if(!/^[0-9]{4}$/.test(codeEl.value.trim())){
+    tsncMsg("Please enter the 4-digit code from your email.",false);
+    codeEl.focus(); return;
+  }
+  const btn=document.getElementById("tsnc-verify-btn");
+  if(btn){btn.disabled=true;btn.textContent="Checking…";}
+  tsncPost({
+    action:"tsnc_verify_code",
+    nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+    email:emailEl.value.trim(),
+    code:codeEl.value.trim()
+  }).then(d=>{
+    if(d.success){
+      window.__tsncEmailVerified=true;
+      window.__tsncVerifiedEmail=emailEl.value.trim().toLowerCase();
+      const wrap=document.getElementById("tsnc-code-wrap");
+      if(wrap)wrap.style.display="none";
+      const sendBtn=document.getElementById("tsnc-send-code");
+      if(sendBtn)sendBtn.style.display="none";
+      tsncMsg("✓ Email verified — submitting your request…",true);
+      const reserveBtn=document.querySelector("#tsnc-lockform button[type=submit]");
+      if(reserveBtn){reserveBtn.disabled=false;reserveBtn.click();}
+    } else {
+      tsncMsg(tsncErr(d,"Incorrect code — please try again."),false);
+      if(btn){btn.disabled=false;btn.textContent="Verify";}
+    }
+  }).catch(()=>{
+    tsncMsg("Error — please try again.",false);
+    if(btn){btn.disabled=false;btn.textContent="Verify";}
+  });
+}
+
+// Wire up the buttons here (inline onclick can't reach functions inside this IIFE)
+(function(){
+  const send=document.getElementById("tsnc-send-code");
+  const ver=document.getElementById("tsnc-verify-btn");
+  const emailEl=document.getElementById("tsnc-l-email");
+  if(send)send.addEventListener("click",tsncSendVerifyCode);
+  if(ver)ver.addEventListener("click",tsncUnlockReserve);
+  // Changing the email after verifying invalidates the verification
+  if(emailEl)emailEl.addEventListener("input",()=>{
+    if(window.__tsncEmailVerified && emailEl.value.trim().toLowerCase()!==window.__tsncVerifiedEmail){
+      window.__tsncEmailVerified=false;
+      const sendBtn=document.getElementById("tsnc-send-code");
+      if(sendBtn){sendBtn.style.display="";sendBtn.textContent="Send verification code";sendBtn.dataset.label="";}
+      tsncMsg("Email changed — please verify again.",false);
+    }
+  });
+})();
+// ============ END EMAIL VERIFICATION ============
+
+// ================= PRICING ENGINE — edit rates, zones & codes here =================
+const P = {
+  minJob: 275, included: 150, promo: 50, hst: 0.13,   // $275 base − $50 web offer = $225 Toronto minimum
+  rugMin: 229,   // list minimum in Toronto; −$50 offer nets $179. Zone rug travel is added on top (see AREAS rugFee).
+  room:50, largeRoom:75, hallway:25, stair:50,
+  seat:50, chaise:100, recliner:75, pullout:75, ottoman:50,
+  mattressS:75, mattressQ:100, mattressK:150, diningSeat:30, footstool:30,
+  tiers:{none:0, healthy:25, total:35},   // flat per item, any item
+  rug:{std:3.29, silk:4.29, hide:6.00}, rugAdd:{enzyme:0.75, moth:0.75, stain:1.00, bundle:1.50},  // bundle = enzyme + stain shield (moth is separate)
+};
+// AREA -> travel fee, baked into the base service line (never itemized).
+// Grouped by price in the dropdown (see calculator() markup). Edit fees here.
+// Job minimum shown to customer = 225 + fee (after the $50 web offer).
+const AREAS = [
+  // Toronto (all six former boroughs) — $0
+  {label:"Toronto (Old Toronto / Downtown)", fee:0},
+  {label:"North York", fee:0},
+  {label:"Scarborough", fee:0},
+  {label:"Etobicoke", fee:0},
+  {label:"East York", fee:0},
+  {label:"York", fee:0},
+  // +$50
+  {label:"Vaughan", fee:50},
+  {label:"Thornhill", fee:50},
+  {label:"Woodbridge", fee:50},
+  {label:"Maple", fee:50},
+  {label:"King City", fee:50},
+  {label:"Kleinburg", fee:50},
+  // +$75
+  {label:"Mississauga", fee:75},
+  {label:"Ajax", fee:75},
+  {label:"Pickering", fee:75},
+  // +$100
+  {label:"Richmond Hill", fee:100},
+  {label:"Markham", fee:100},
+  {label:"Stouffville", fee:100},
+  {label:"Uxbridge", fee:100},
+  {label:"Newmarket", fee:100},
+  {label:"Aurora", fee:100},
+  {label:"Bradford", fee:100},
+  {label:"Brampton", fee:100},
+  {label:"Oakville", fee:100},
+  {label:"Barrie", fee:100},
+  {label:"Innisfil", fee:100},
+  // +$125
+  {label:"Burlington", fee:125},
+  {label:"Milton", fee:125},
+  {label:"Whitby", fee:125},
+  {label:"Oshawa", fee:125},
+  {label:"Georgina / Keswick", fee:125},
+  {label:"Caledon / Bolton", fee:125},
+  {label:"Halton Hills / Georgetown", fee:125},
+  {label:"Courtice / Bowmanville", fee:125},
+  // confirm
+  {label:"Other / Not sure", fee:null},
+];
+// ===== BUILDINGS WITH RESTRICTED LOADING ACCESS — office can extend this list =====
+// Applies to IN-HOME work only (carpet & upholstery). NEVER applied to area rugs:
+// the rug crew collects and delivers without hauling equipment or waiting on a dock.
+// Charged once per in-home job, building-wide (every unit at the address).
+const BUILDING_SURCHARGES = [
+  {match:"180 university ave",  building:"Shangri-La Toronto",       fee:100},
+  {match:"183 wellington st w", building:"Ritz-Carlton Residences",  fee:100},
+];
+function normalizeAddress(s){
+  return (s||"").toLowerCase()
+    .replace(/[.,#]/g," ")
+    .replace(/\b(unit|suite|ste|apt|apartment|floor|fl)\b\s*[\w-]*/g," ")
+    .replace(/\b(avenue|ave)\b/g,"ave")
+    .replace(/\b(street|str|st)\b/g,"st")
+    .replace(/\b(west)\b/g,"w").replace(/\b(east)\b/g,"e")
+    .replace(/\s+/g," ").trim();
+}
+function buildingFor(addr){
+  const n=normalizeAddress(addr); if(!n) return null;
+  // Anchored at a word boundary so "180 university ave" cannot match inside "1180 university ave".
+  return BUILDING_SURCHARGES.find(b=>new RegExp("(^|\\s)"+b.match.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).test(n)) || null;
+}
+// ==================================================================================
+const $=s=>document.getElementById?document.querySelector(s):null, $$=s=>document.querySelectorAll(s);
+const state={area:"",isReturning:false,tier:"none",surcharge:null,
+  rooms:0,largeRooms:0,hallways:0,stairs:0,
+  seats:0,chaise:0,recliner:0,pullout:0,ottoman:0,footstool:0,diningSeats:0,mattressS:0,mattressQ:0,mattressK:0,leather:false,
+  rugs:[{t:"std",l:0,w:0,unit:"ft"}],rugAdd:{enzyme:false,moth:false,stain:false}};
+const money=n=>{const v=Math.round(n*100)/100;
+  return "$"+v.toLocaleString("en-CA",{minimumFractionDigits:v%1?2:0,maximumFractionDigits:2});};
+const RUG_FEE={0:0,50:30,75:45,100:60,125:75};
+function zoneFor(area){
+  if(!area) return null;
+  const z=AREAS.find(a=>a.label===area); if(!z) return null;
+  return {...z, rugFee: z.fee===null?null:(RUG_FEE[z.fee]??0)};
+}
+function items(){
+  const I=[];const add=(n,q,p,a)=>{if(q>0)I.push({n:q>1?`${n} × ${q}`:n,v:q*p,a:a!==undefined?a:q})};
+  add("Room",state.rooms,P.room);
+  add("Large room (150+ ft²)",state.largeRooms,P.largeRoom);
+  add("Stair set",state.stairs,P.stair);
+  add("Hallway",state.hallways,P.hallway,0);
+  add("Seat",state.seats,P.seat);
+  add("Chaise / oversized seat",state.chaise,P.chaise,state.chaise*2);
+  add("Recliner",state.recliner,P.recliner);
+  add("Pull-out sofa",state.pullout,P.pullout);
+  add("Ottoman",state.ottoman,P.ottoman);
+  add("Dining chair / bench seat",state.diningSeats,P.diningSeat,0);
+  add("Mattress (twin / single / double)",state.mattressS,P.mattressS,0);
+  add("Mattress (queen)",state.mattressQ,P.mattressQ,0);
+  add("Mattress (king)",state.mattressK,P.mattressK);
+  return I;
+}
+function calc(){
+  const body=$("#tsnc-tlines"); if(!body) return;
+  const TORONTO=AREAS[0].label;
+  const chosen=!!state.area;
+  const zone=zoneFor(state.area||TORONTO);   // default to Toronto pricing until an area is chosen
+  const zf=$("#tsnc-zonelabel");
+  const confirmTravel = zone && zone.fee===null;  // "Other / Not sure"
+  if(zf)zf.textContent = !chosen ? "Toronto pricing shown — choose your area for your exact price"
+    : confirmTravel ? "We'll confirm your travel charge — pricing below excludes travel"
+    : ("Pricing shown for "+zone.label);
+  const fee = (zone && zone.fee!==null) ? zone.fee : 0;
+
+  // ---- ONE RULE: Job minimum (zone) covers travel, setup and the first $150 of cleaning.
+  //      Anything over $150 of cleaning items is added on top.
+  //      NEVER show the figure $150 to the customer — the customer-facing wording is
+  //      "includes 3 standard areas". ----
+  const ITEMS=[
+    {key:"rooms",      label:"Room",                          price:P.room,       cat:"carpet"},
+    {key:"largeRooms", label:"Large room (151–250 ft²)",      price:P.largeRoom,  cat:"carpet"},
+    {key:"stairs",     label:"Stair set",                     price:P.stair,      cat:"carpet"},
+    {key:"hallways",   label:"Hallway",                       price:P.hallway,    cat:"carpet"},
+    {key:"seats",      label:"Standard seat",                 price:P.seat,       cat:"upholstery"},
+    {key:"chaise",     label:"Sectional chaise",              price:P.chaise,     cat:"upholstery"},
+    {key:"recliner",   label:"Recliner",                      price:P.recliner,   cat:"upholstery"},
+    {key:"pullout",    label:"Pull-out mechanism",            price:P.pullout,    cat:"upholstery"},
+    {key:"ottoman",    label:"Ottoman",                       price:P.ottoman,    cat:"upholstery"},
+    {key:"footstool",  label:"Footstool / small ottoman",     price:P.footstool,  cat:"upholstery"},
+    {key:"diningSeats",label:"Dining / office / bar seat",    price:P.diningSeat, cat:"upholstery"},
+    {key:"mattressS",  label:"Mattress (twin / single / double)",price:P.mattressS,cat:"upholstery"},
+    {key:"mattressQ",  label:"Mattress (queen)",              price:P.mattressQ,  cat:"upholstery"},
+    {key:"mattressK",  label:"Mattress (king)",               price:P.mattressK,  cat:"upholstery"},
+  ];
+  const CATNAME={carpet:"Carpet & stairs", upholstery:"Upholstery"};
+
+  // ================= IN-HOME BLOCK (carpet & upholstery) =================
+  let inLines=[], inSub=0, itemsVal=0, itemCount=0;
+  ITEMS.forEach(d=>{const q=state[d.key]||0; itemsVal+=q*d.price; itemCount+=q;});
+
+  if(itemCount>0){
+    const minJob=P.minJob+fee;
+    inLines.push({n:`Job minimum — ${chosen?zone.label:"Toronto (choose your area above)"} · includes 3 standard areas`,v:minJob});
+    inSub+=minJob;
+
+    // Expand to individual units, then fill the minimum with WHOLE items, most expensive
+    // first. An item is NEVER split across the covered row and the additional row — that
+    // split is what produced two rows for one item type in the old breakdown.
+    let units=[];
+    ITEMS.forEach(d=>{const q=state[d.key]||0; for(let k=0;k<q;k++)units.push({key:d.key,label:d.label,price:d.price,cat:d.cat});});
+    let credit=P.included, covered=[], extras=[];
+    [...units].sort((a,b)=>b.price-a.price).forEach(u=>{
+      if(u.price<=credit){covered.push(u);credit-=u.price;} else extras.push(u);
+    });
+    const group=arr=>{const m=new Map();
+      arr.forEach(u=>{const g=m.get(u.key)||{label:u.label,price:u.price,cat:u.cat,q:0};g.q++;m.set(u.key,g);});
+      return [...m.values()];};
+    const listOf=gs=>gs.map(g=>`${g.label}${g.q>1?" × "+g.q:""}`).join(", ");
+
+    if(covered.length)
+      inLines.push({n:"· Covered by your minimum: "+listOf(group(covered)),v:null});
+
+    // ONE additional row carrying the whole overage. Detail lines underneath, grouped by
+    // category when the job spans both.
+    const over = itemsVal - P.included;
+    if(over>0 && extras.length){
+      inLines.push({n:"Additional items",v:over});
+      const gs=group(extras);
+      const cats=[...new Set(gs.map(g=>g.cat))];
+      if(cats.length>1) cats.forEach(c=>{
+        const sub=gs.filter(g=>g.cat===c); if(sub.length)
+          inLines.push({n:`· ${CATNAME[c]}: ${listOf(sub)}`,v:null});
+      });
+      else inLines.push({n:"· "+listOf(gs),v:null});
+    }
+
+    // Only nudge when the job is genuinely UNDER the minimum. If the order is already over,
+    // leftover credit is unreachable (no whole item fits) and adding one would NOT be free.
+    if(credit>0 && itemsVal<P.included){
+      const hint = credit>=P.room ? "a room, stair set or sofa seat" : credit>=P.diningSeat ? "a hallway or dining chair" : "a hallway";
+      inLines.push({n:`· You've got room in your minimum — add ${hint} at no extra charge`,v:null,nudge:true});
+    }
+    if(state.leather) inLines.push({n:"· Leather noted — same price, leather-specific process",v:null});
+
+    // ---- Protection & freshness: flat per item ----
+    if(state.tier!=="none"){
+      const rate=P.tiers[state.tier];
+      const tn={healthy:"Healthy Home",total:"Total Protection"}[state.tier];
+      const td={healthy:"Sanitizer for a hygienic finish, plus enzyme treatment where there's pet odour.",
+                total:"Everything in Healthy Home, plus Stain Shield so future spills blot away instead of soaking in."}[state.tier];
+      inLines.push({n:`${tn} — ${money(rate)} × ${itemCount} item${itemCount>1?"s":""}`,v:rate*itemCount});
+      inLines.push({n:"· "+td,v:null});
+      inSub+=rate*itemCount;
+    }
+
+    // ---- Building access surcharge: in-home only, once per job, building-wide ----
+    if(state.surcharge){
+      inLines.push({n:`Building access — ${state.surcharge.building}`,v:state.surcharge.fee});
+      inSub+=state.surcharge.fee;
+    }
+
+    inSub+=Math.max(0,over);
+  }
+
+  // ================= RUG BLOCK (separate crew, separate order, separate bill) =================
+  let rugLines=[], rugSub=0;
+  const liveRugs=state.rugs.filter(r=>r.l>0&&r.w>0);
+  const hasRugs=liveRugs.length>0;
+  if(hasRugs){
+    const rugFee=(zone&&zone.rugFee!==null&&zone.rugFee!==undefined)?zone.rugFee:0;
+    const floor=P.rugMin+rugFee;
+    const adds=state.rugAdd;
+    const pair = adds.enzyme && adds.stain;
+    const addRate = (pair ? P.rugAdd.bundle : (adds.enzyme?P.rugAdd.enzyme:0)+(adds.stain?P.rugAdd.stain:0)) + (adds.moth?P.rugAdd.moth:0);
+    let wash=0, sqTotal=0;
+    liveRugs.forEach(r=>{const sq=Math.round(r.l*r.w*10)/10; sqTotal+=sq; const v=sq*P.rug[r.t]; wash+=v;
+      const tn=r.t==="hide"?"Cowhide / sheepskin":r.t==="silk"?"Silk rug":"Rug";
+      rugLines.push({n:`· ${tn} ${r.l}×${r.w} ft (${sq} ft² @ ${money(P.rug[r.t])})`,v:v});});
+    rugSub=wash;
+    if(wash<floor){ rugLines.push({n:"Rug order minimum — pickup, delivery & plant wash",v:floor-wash}); rugSub=floor;
+      const room=Math.floor((floor-wash)/P.rug.std);
+      if(room>=8) rugLines.push({n:`· Your rug minimum has room for about ${room} more ft² — add a runner or a second rug at no extra charge`,v:null,nudge:true}); }
+    if(addRate>0){
+      const parts=[]; if(pair) parts.push("Enzyme + Stain Shield bundle"); else { if(adds.enzyme)parts.push("Enzyme"); if(adds.stain)parts.push("Stain Shield"); } if(adds.moth) parts.push("Moth");
+      rugLines.push({n:`${parts.join(" + ")} — ${sqTotal} ft² @ $${addRate.toFixed(2)}`,v:sqTotal*addRate}); rugSub+=sqTotal*addRate; }
+    rugLines.push({n:"Rug pickup & delivery",v:"FREE"});
+  }
+
+  // ---- $50 online offer: once per in-home order, once per rug order (separate crews) ----
+  const _d=new Date(), _end=new Date(_d.getFullYear(),_d.getMonth()+1,0);
+  const _endTxt=_end.toLocaleDateString("en-CA",{month:"short",day:"numeric"});
+
+  // Close out a block with its own subtotal → offer → HST → total. No combined grand total.
+  function closeBlock(lines,sub){
+    if(sub<=0) return {lines:lines,total:0};
+    lines.push({n:"Subtotal",v:sub,sub:true});
+    lines.push({n:`Online booking offer — you save $50 · ends ${_endTxt}`,v:-P.promo,save:true});
+    let s=Math.max(0,sub-P.promo);
+    lines.push({n:"Subtotal after offer (before HST)",v:s,sub:true});
+    const hst=s*P.hst;
+    lines.push({n:"HST (13%)",v:hst});
+    const tot=s+hst;
+    lines.push({n:"Total",v:tot,tot:true});
+    return {lines:lines,total:tot};
+  }
+
+  const inBlock  = itemCount>0 ? closeBlock(inLines,inSub)   : {lines:[],total:0};
+  const rugBlock = hasRugs     ? closeBlock(rugLines,rugSub) : {lines:[],total:0};
+
+  // ---- Render: two independent blocks, never a combined grand total ----
+  let out=[];
+  if(inBlock.lines.length){
+    out.push({n:"In-home cleaning",v:null,head:true});
+    out=out.concat(inBlock.lines);
+  }
+  if(rugBlock.lines.length){
+    out.push({n:"Area rugs — separate visit, billed separately",v:null,head:true});
+    out=out.concat(rugBlock.lines);
+    out.push({n:"· These rug prices are estimates based on the dimensions you gave us. We measure each rug at our plant and update your total to match — we'll confirm with you before cleaning if it changes.",v:null,est:true});
+  }
+
+  body.innerHTML=out.length
+    ? out.map(l=>`<div class="tl${l.v===null?" muted":""}${l.sub?" tl-sub":""}${l.save?" tl-save":""}${l.nudge?" tl-nudge":""}${l.head?" tl-head":""}${l.tot?" tl-tot":""}${l.est?" tl-est":""}"><span>${l.n}</span><span>${
+        l.v===null?"":l.v==="FREE"?"FREE":(l.v<0?"−"+money(-l.v):money(l.v))}</span></div>`).join("")
+    : '<div class="tl muted"><span>Add rooms, seats or a rug to see your price</span><span>—</span></div>';
+
+  // The big figure: one block → that block's total. Both → suppressed, because the two
+  // orders are invoiced separately and a combined number would misrepresent the bill.
+  const tt=$(".ticket-total"), tamt=$("#tsnc-tamt"), tlbl=tt?tt.querySelector("span"):null;
+  const both = inBlock.total>0 && rugBlock.total>0;
+  if(tt) tt.style.display = both ? "none" : "";
+  if(tamt && !both){
+    const only = inBlock.total>0 ? inBlock.total : rugBlock.total;
+    tamt.textContent = only>0 ? money(only) : "$0";
+    if(tlbl) tlbl.textContent = rugBlock.total>0 && inBlock.total<=0 ? "Rug total (incl. HST)" : "Estimated total";
+  }
+
+  const cn=$("#tsnc-commnote"); if(cn){ if(itemsVal>=400){ cn.style.display="block"; cn.innerHTML='Looks like a larger job. Offices, condos and multi-unit properties are priced separately with volume rates — <a href="commercial.html"><b>request a commercial quote</b></a>. Buildings and large offices get a free site walkthrough.'; } else cn.style.display="none"; }
+  const club=$("#tsnc-clubnote"); if(club) club.style.display = itemCount>0 ? "block" : "none";
+
+  // Full breakdown for the emails — render THESE lines, do not rebuild the math server-side.
+  const pack=b=>b.lines.map(l=>({label:l.n.replace(/&amp;/g,"&"),
+      amount: l.v===null?"":(l.v==="FREE"?"FREE":(l.v<0?"−"+money(-l.v):money(l.v))),
+      type: l.head?"header": l.tot?"total": l.sub?"subtotal": l.save?"savings": l.nudge?"nudge": l.v===null?"detail":"line"}));
+  window.__estimate={
+    area: state.area || "NOT CHOSEN — Toronto pricing shown",
+    returning: state.isReturning, leather: state.leather,
+    inHome: { has: itemCount>0, lines: pack(inBlock), total: inBlock.total>0?money(inBlock.total):"$0",
+              surcharge: state.surcharge ? {building:state.surcharge.building, fee:money(state.surcharge.fee)} : null },
+    rugs:   { has: hasRugs,      lines: pack(rugBlock), total: rugBlock.total>0?money(rugBlock.total):"$0" }
+  };
+  // GA4: calc_estimate_shown — fires once per page load when first non-zero estimate appears
+  if(!window.__shownOnce){
+    const anyTotal = inBlock.total>0 ? inBlock.total : rugBlock.total;
+    if(anyTotal>0){
+      window.__shownOnce=true;
+      if(typeof gtag==="function") gtag("event","calc_estimate_shown",{total:money(anyTotal),area:state.area||""});
+    }
+  }
+}
+
+const QUICK=[[4,6],[5,8],[6,9],[8,10],[9,12]];
+function toFt(v,unit){ v=parseFloat(v)||0; return unit==="in"?v/12: unit==="cm"?v/30.48: v; }
+function renderRugs(){
+  const el=$("#tsnc-rugrows"); if(!el)return;
+  el.innerHTML=state.rugs.map((r,i)=>`<div class="rugrow" data-i="${i}">
+    <div class="rugtop">
+      <select class="rug-type" aria-label="Rug type"><option value="std"${r.t==="std"?" selected":""}>Standard rug — wool, synthetic, machine-made · $3.29/ft²</option><option value="silk"${r.t==="silk"?" selected":""}>Silk — hand wash only · $4.29/ft²</option><option value="hide"${r.t==="hide"?" selected":""}>Cowhide / sheepskin · $6.00/ft²</option></select>
+      <button type="button" class="rugdel" aria-label="Remove rug">${state.rugs.length>1?"Remove":"Clear"}</button>
+    </div>
+    <div class="quick">${QUICK.map(([a,b])=>`<button type="button" class="qs${r.l===a&&r.w===b&&r.unit==="ft"?" on":""}" data-l="${a}" data-w="${b}">${a}×${b}</button>`).join("")}<span class="note" style="align-self:center">or custom:</span></div>
+    <div class="rugdims">
+      <input class="rug-l" type="number" min="0" step="0.1" placeholder="Length" aria-label="Rug length" value="${r.rawL??(r.l||"")}">
+      <span>×</span>
+      <input class="rug-w" type="number" min="0" step="0.1" placeholder="Width" aria-label="Rug width" value="${r.rawW??(r.w||"")}">
+      <select class="rug-unit" aria-label="Unit"><option value="ft"${r.unit==="ft"?" selected":""}>ft</option><option value="in"${r.unit==="in"?" selected":""}>in</option><option value="cm"${r.unit==="cm"?" selected":""}>cm</option></select>
+      <span class="rugsq note">${r.l>0&&r.w>0?Math.round(r.l*r.w*10)/10+" ft²":""}</span>
+    </div>
+  </div>`).join("");
+  $$(".rugrow").forEach(row=>{const i=+row.dataset.i, r=state.rugs[i];
+    row.querySelector(".rug-type").addEventListener("change",e=>{r.t=e.target.value;calc();});
+    const L=row.querySelector(".rug-l"),W=row.querySelector(".rug-w"),U=row.querySelector(".rug-unit");
+    const upd=()=>{r.rawL=L.value;r.rawW=W.value;r.unit=U.value;r.l=Math.round(toFt(L.value,U.value)*10)/10;r.w=Math.round(toFt(W.value,U.value)*10)/10;
+      row.querySelector(".rugsq").textContent=r.l>0&&r.w>0?Math.round(r.l*r.w*10)/10+" ft²":""; row.querySelectorAll(".qs").forEach(b=>b.classList.remove("on")); calc();};
+    L.addEventListener("input",upd);W.addEventListener("input",upd);U.addEventListener("change",upd);
+    row.querySelectorAll(".qs").forEach(b=>b.addEventListener("click",()=>{ const same=r.unit==="ft"&&r.l===+b.dataset.l&&r.w===+b.dataset.w; if(same){r.l=0;r.w=0;r.rawL="";r.rawW="";} else {r.unit="ft";r.l=+b.dataset.l;r.w=+b.dataset.w;r.rawL=r.l;r.rawW=r.w;} renderRugs();calc();}));
+    const del=row.querySelector(".rugdel"); if(del)del.addEventListener("click",()=>{ if(state.rugs.length>1) state.rugs.splice(i,1); else state.rugs[0]={t:r.t,l:0,w:0,unit:"ft"}; renderRugs();calc();});
+  });
+}
+function validateCode(){
+  const inp=$("#tsnc-promo-in"),msg=$("#tsnc-promo-msg"); if(!inp)return;
+  const c=inp.value.toUpperCase().replace(/\s/g,"");
+  if(!c){msg.textContent="";}
+  else {msg.textContent="We'll verify this code when we confirm your booking."; msg.style.color="#7B937F";}
+  calc();
+}
+function bindCalc(){
+  if(!$("#tsnc-estimate"))return;
+  const ar=$("#tsnc-area-in"); if(ar)ar.addEventListener("change",()=>{state.area=ar.value; const err=$("#tsnc-l-areaerr"); if(err)err.style.display="none"; ar.style.borderColor=""; calc(); if(typeof gtag==="function"&&ar.value)gtag("event","calc_area_selected",{area:ar.value});});
+  const rc=$("#tsnc-returning");
+  if(rc)rc.addEventListener("change",()=>{state.isReturning=rc.checked;
+    calc();});
+  const pin=$("#tsnc-promo-in"); if(pin)pin.addEventListener("input",validateCode);
+  $$('input[name="tier"]').forEach(r=>r.addEventListener("change",()=>{state.tier=r.value;calc();if(typeof gtag==="function")gtag("event","calc_tier_selected",{tier:r.value});}));
+  $$(".tab").forEach(t=>t.addEventListener("click",()=>{
+    $$(".tab").forEach(x=>x.setAttribute("aria-selected","false"));
+    t.setAttribute("aria-selected","true");
+    $$(".pane").forEach(p=>p.hidden=p.dataset.pane!==t.dataset.tab);
+    const tiers=$("#tsnc-tiers"); if(tiers) tiers.style.display = t.dataset.tab==="rugs" ? "none" : "";
+  }));
+  $$(".stepper").forEach(st=>{
+    const key=st.dataset.key,val=st.querySelector(".val");
+    st.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+      const prev=state[key];
+      state[key]=Math.max(0,Math.min(40,state[key]+(b.dataset.d==="+"?1:-1)));
+      val.textContent=state[key];
+      if(prev===0&&state[key]===1&&typeof gtag==="function"){
+        const activeTab=document.querySelector('.tab[aria-selected="true"]');
+        gtag("event","calc_item_added",{item:key,tab:activeTab?activeTab.dataset.tab:"unknown"});
+      }
+      calc();}));
+  });
+  renderRugs();
+  const addRug=$("#tsnc-addrug"); if(addRug)addRug.addEventListener("click",()=>{state.rugs.push({t:"std",l:0,w:0,unit:"ft"});renderRugs();});
+  const ra=v=>document.querySelector(`input[name="rugadd"][value="${v}"]`);
+  const syncBundle=()=>{ const both=state.rugAdd.enzyme&&state.rugAdd.stain; const b=ra("bundle"); if(b)b.checked=both; };
+  $$('input[name="rugadd"]').forEach(c=>c.addEventListener("change",()=>{
+    if(c.value==="bundle"){ state.rugAdd.enzyme=c.checked; state.rugAdd.stain=c.checked; if(ra("enzyme"))ra("enzyme").checked=c.checked; if(ra("stain"))ra("stain").checked=c.checked; }
+    else { state.rugAdd[c.value]=c.checked; }
+    syncBundle(); calc();}));
+  const lea=$("#tsnc-leather"); if(lea)lea.addEventListener("change",()=>{state.leather=lea.checked;calc();});
+  // soft-gate: lock-in (full lead) and email-quote (light lead)
+  const lf=$("#tsnc-lockform"), df=$("#tsnc-detailsform"), done=$("#tsnc-l-done");
+  if(lf){
+    // GA4: calc_reserve_click — fires when the Reserve button is clicked (before validation)
+    const reserveBtn=lf.querySelector("button[type=submit]");
+    if(reserveBtn)reserveBtn.addEventListener("click",()=>{
+      if(typeof gtag==="function")gtag("event","calc_reserve_click",{total:window.__estimate&&window.__estimate.inHome?window.__estimate.inHome.total:"$0",area:state.area||"",returning:state.isReturning});
+    });
+    lf.addEventListener("submit",e=>{e.preventDefault();
+    // Name is required
+    const nameEl=$("#tsnc-l-name");
+    if(nameEl&&!nameEl.value.trim()){nameEl.focus();nameEl.style.borderColor="#B3471F";nameEl.setAttribute("placeholder","Please enter your name");return;}
+    if(nameEl)nameEl.style.borderColor="";
+    // Area is required at Reserve — the on-screen price may be Toronto-defaulted.
+    if(!state.area){ const err=$("#tsnc-l-areaerr"); if(err)err.style.display="block"; const ar=$("#tsnc-area-in"); if(ar){ar.focus(); ar.style.borderColor="#B3471F";} return; }
+    // Email verification — must be verified before submitting
+    if(window.__tsncVerifyRequired && !window.__tsncEmailVerified){
+      const sent=!!window.__tsncCodeSentTo;
+      tsncMsg(sent?"Please enter the code we emailed you and click Verify first.":"Please verify your email first — click “Send verification code”.",false);
+      const target=document.getElementById(sent?"tsnc-verify-code":"tsnc-send-code"); if(target)target.focus();
+      return;
+    }
+    const v=id=>{const el=$(id);return el?el.value:"";};
+    const payload={
+      action:"tsnc_lead",
+      nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+      name:v("#tsnc-l-name"),phone:v("#tsnc-l-phone"),email:v("#tsnc-l-email"),
+      estimate:JSON.stringify(window.__estimate)
+    };
+    const submitBtn=lf.querySelector("button[type=submit]");
+    if(submitBtn){submitBtn.disabled=true;submitBtn.textContent="Sending…";}
+    fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded"},
+      body:new URLSearchParams(payload).toString()
+    }).then(r=>r.json()).then(d=>{
+      window.__requestId = d.request_id||null;
+      if(typeof gtag==="function")gtag("event","calc_submit",{total:window.__estimate&&window.__estimate.inHome?window.__estimate.inHome.total:"$0",area:state.area||"",returning:state.isReturning});
+      lf.style.display="none"; if(df)df.classList.add("show");
+      const eq=$("#tsnc-emailquote"); const eqBox=eq&&(eq.closest("details")||eq.parentElement); if(eqBox)eqBox.style.display="none";
+    }).catch(()=>{
+      if(submitBtn){submitBtn.disabled=false;submitBtn.textContent="Reserve My Spot";}
+      alert("Something went wrong — please try again or call us at 416 755 2528.");
+    });
+  });}
+  const finish=()=>{ if(df)df.style.display="none"; if(done)done.style.display="block"; };
+  if(df)df.addEventListener("submit",e=>{e.preventDefault();
+    const v=id=>{const el=$(id);return el?el.value:"";};
+    const payload2={
+      action:"tsnc_booking_details",
+      nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+      request_id:window.__requestId||"",
+      name:v("#tsnc-l-name"),phone:v("#tsnc-l-phone"),email:v("#tsnc-l-email"),
+      estimate:JSON.stringify(window.__estimate),
+      address:v("#tsnc-l-address"),unit:v("#tsnc-l-unit"),preferred_date:v("#tsnc-l-date"),
+      preferred_time:(document.querySelector('input[name="l-time"]:checked')||{}).value||"",
+      access_notes:v("#tsnc-l-notes"),how_heard:v("#tsnc-l-source")
+    };
+    fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded"},
+      body:new URLSearchParams(payload2).toString()
+    }).catch(()=>{});
+    if(typeof gtag==="function")gtag("event","calc_submit",{total:window.__estimate&&window.__estimate.inHome?window.__estimate.inHome.total:"$0",area:state.area||"",returning:state.isReturning});
+    finish();
+  });
+  const skip=$("#tsnc-l-skip"); if(skip)skip.addEventListener("click",finish);
+  // ---- Step 2: building access check. Fires as the address is typed, BEFORE submit, so the
+  //      customer sees the charge and the adjusted total rather than hearing it on the call. ----
+  const addr=$("#tsnc-l-address"), bnote=$("#tsnc-l-buildingnote");
+  const checkBuilding=()=>{
+    const hit = addr ? buildingFor(addr.value) : null;
+    const same = (state.surcharge&&hit&&state.surcharge.building===hit.building) || (!state.surcharge&&!hit);
+    state.surcharge = hit ? {building:hit.building, fee:hit.fee} : null;
+    if(bnote){
+      if(hit){ bnote.style.display="block";
+        bnote.innerHTML = `<b>Heads up</b> — this building has restricted loading access, so an access charge of <b>${money(hit.fee)}</b> applies to in-home cleaning. It's already included in the total above. We'll confirm everything when we call.`;
+      } else bnote.style.display="none";
+    }
+    if(!same) calc();
+  };
+  if(addr){ addr.addEventListener("input",checkBuilding); addr.addEventListener("change",checkBuilding); }
+
+  // ---- Preferred date: native calendar, bounded to days we actually work ----
+  // Mon–Fri 9–6, Sat 9–3, closed Sunday. Earliest is tomorrow; window is 90 days.
+  (function(){
+    const di=$("#tsnc-l-date"); if(!di) return;
+    const err=$("#tsnc-l-dateerr"), quick=$("#tsnc-l-datequick");
+    const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    const parse=s=>{const[a,b,c]=String(s).split("-").map(Number); return new Date(a,b-1,c);};
+    const today=new Date(); today.setHours(0,0,0,0);
+    const first=new Date(today); first.setDate(first.getDate()+1);
+    const last=new Date(today);  last.setDate(last.getDate()+90);
+    di.min=iso(first); di.max=iso(last);
+
+    // Quick picks: the next three days we're open, so the common case is one tap.
+    const DAY=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const picks=[]; const d=new Date(first);
+    while(picks.length<3){ if(d.getDay()!==0) picks.push(new Date(d)); d.setDate(d.getDate()+1); }
+    if(quick) quick.innerHTML=picks.map(p=>
+      `<button type="button" data-d="${iso(p)}">${DAY[p.getDay()]}<small>${p.toLocaleDateString("en-CA",{month:"short",day:"numeric"})}</small></button>`).join("");
+
+    const mark=()=>{ if(quick) quick.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.d===di.value)); };
+    const validate=()=>{
+      const bad = di.value && parse(di.value).getDay()===0;   // Sunday — closed
+      if(err) err.style.display = bad ? "block" : "none";
+      di.style.borderColor = bad ? "#B3471F" : "";
+      di.setCustomValidity(bad ? "We're closed Sundays — please pick another day." : "");
+      mark();
+    };
+    di.addEventListener("change",validate); di.addEventListener("input",validate);
+    if(quick) quick.querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+      di.value=b.dataset.d; validate();
+    }));
+  })();
+
+  // ---- Upholstery presets: pick the furniture, not the cushion count ----
+  $$(".preset").forEach(b=>b.addEventListener("click",()=>{
+    state.seats  += (+b.dataset.seats||0);
+    state.chaise += (+b.dataset.chaise||0);
+    const sv=document.querySelector('.stepper[data-key="seats"] .val');  if(sv) sv.textContent=state.seats;
+    const cv=document.querySelector('.stepper[data-key="chaise"] .val'); if(cv) cv.textContent=state.chaise;
+    b.classList.add("just"); setTimeout(()=>b.classList.remove("just"),600);
+    calc();
+  }));
+  const ef=$("#tsnc-emailquote");
+  if(ef)ef.addEventListener("submit",e=>{e.preventDefault();
+    const eqEmail=$("#tsnc-eq-email");
+    const payload={
+      action:"tsnc_lead",
+      nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+      name:"",phone:"",email:eqEmail?eqEmail.value:"",
+      email_only:"1",
+      estimate:JSON.stringify(window.__estimate)
+    };
+    fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded"},
+      body:new URLSearchParams(payload).toString()
+    }).then(()=>{
+      if(typeof gtag==="function")gtag("event","calc_email_quote",{total:window.__estimate&&window.__estimate.inHome?window.__estimate.inHome.total:"$0"});
+    }).catch(()=>{});
+    ef.querySelectorAll("input,button").forEach(x=>x.style.display="none");
+    ef.querySelector(".ok").style.display="block";});
+  calc();
+}
+function bindExitIntent(){
+  const modal=$("#tsnc-exitmodal"); if(!modal)return;
+  let shown=false;
+  const hasQuote=()=>window.__estimate && (window.__estimate.inHome&&window.__estimate.inHome.total&&window.__estimate.inHome.total!=="$0" || window.__estimate.rugs&&window.__estimate.rugs.total&&window.__estimate.rugs.total!=="$0");
+  const fire=()=>{ if(shown||!hasQuote()||modal.hidden===false)return; shown=true; modal.hidden=false; };
+  // desktop: mouse leaves toward the top (toward tabs/close)
+  document.addEventListener("mouseout",e=>{ if(!e.relatedTarget&&e.clientY<=0)fire(); });
+  // mobile/all: back-button intent
+  history.pushState(null,"",location.href);
+  window.addEventListener("popstate",()=>{ if(hasQuote()&&!shown){fire(); history.pushState(null,"",location.href);} });
+  // also after 25s of inactivity post-quote
+  let t; const idle=()=>{ clearTimeout(t); t=setTimeout(fire,25000); };
+  ["mousemove","keydown","scroll","touchstart"].forEach(ev=>document.addEventListener(ev,idle,{passive:true}));
+  const ef=$("#tsnc-exitform");
+  if(ef)ef.addEventListener("submit",e=>{ e.preventDefault();
+    const exitEmail=$("#tsnc-exit-email");
+    const payload={
+      action:"tsnc_lead",
+      nonce:window.TSNC_AJAX?window.TSNC_AJAX.nonce:"",
+      name:"",phone:"",email:exitEmail?exitEmail.value:"",
+      email_only:"1",
+      estimate:JSON.stringify(window.__estimate)
+    };
+    fetch(window.TSNC_AJAX?window.TSNC_AJAX.url:"/wp-admin/admin-ajax.php",{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded"},
+      body:new URLSearchParams(payload).toString()
+    }).then(()=>{
+      if(typeof gtag==="function")gtag("event","calc_exit_capture",{total:window.__estimate&&window.__estimate.inHome?window.__estimate.inHome.total:"$0"});
+    }).catch(()=>{});
+    ef.querySelector("input").style.display="none";
+    ef.querySelector("button").style.display="none";
+    ef.querySelector(".exit-ok").style.display="block";
+  });
+}
+function bindNav(){
+  const b=$(".burger"),ul=$(".nav ul");
+  if(b)b.addEventListener("click",()=>ul.classList.toggle("open"));
+  $$(".nav li.has-sub > a").forEach(a=>a.addEventListener("click",e=>{
+    if(innerWidth<981){e.preventDefault();a.parentElement.classList.toggle("open");}
+  }));
+}
+document.addEventListener("DOMContentLoaded",()=>{
+  bindCalc();bindNav();bindExitIntent();
+  // GA4: calc_view — when calculator section scrolls into view (once)
+  const calcSec=document.getElementById("tsnc-estimate");
+  if(calcSec && typeof IntersectionObserver!=="undefined"){
+    const obs=new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting){
+        if(typeof gtag==="function")gtag("event","calc_view",{page:location.pathname});
+        obs.disconnect();
+      }
+    },{threshold:0.2});
+    obs.observe(calcSec);
+  }
+  // GA4: calc_call_click — tel:/sms: links inside calculator
+  if(calcSec){calcSec.querySelectorAll("a[href^='tel:'],a[href^='sms:']").forEach(a=>{
+    a.addEventListener("click",()=>{
+      const method=a.href.startsWith("sms:")?"sms":"tel";
+      if(typeof gtag==="function")gtag("event","calc_call_click",{method:method});
+    });
+  });}
+});
+})();
+</script>
